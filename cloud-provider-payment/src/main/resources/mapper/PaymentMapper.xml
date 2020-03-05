@@ -39,7 +39,7 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    <insert id="create" keyProperty="id" useGeneratedKeys="true">
         insert into cloud.payment(serial)
         values (#{serial})
     </insert>
