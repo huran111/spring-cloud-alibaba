@@ -5,7 +5,8 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:7001/eureka
+     #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://peer2:7002/eureka,http://peer1:7001/eureka/  #集群版
 spring:
   application:
     name: cloud-consumer-order

@@ -10,7 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>coml.hr.cloud</groupId>
-    <artifactId>cloud-provider-payment</artifactId>
+    <artifactId>cloud-provider-payment8002</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

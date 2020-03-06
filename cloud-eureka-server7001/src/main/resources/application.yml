@@ -7,4 +7,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://peer2:7002/eureka/
+      defaultZone: http://peer2:7002/eureka/ #集群模式 就是执向其他eureka
+  server:
+    enable-self-preservation: false #禁用自我保护模式
+    eviction-interval-timer-in-ms: 2000 #ms
