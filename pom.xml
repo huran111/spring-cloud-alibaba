@@ -19,6 +19,8 @@
         <module>cloud-provider-payment-8004</module>
         <module>cloud-consumer-zk-order80</module>
         <module>cloud-consumer-fegin-order-80</module>
+        <module>cloud-provider-hystrix-payment-8001</module>
+        <module>cloud-consumer-feign-hystrix-order-80</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
