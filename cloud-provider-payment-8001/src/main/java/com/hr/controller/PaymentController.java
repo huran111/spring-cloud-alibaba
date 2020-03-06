@@ -52,7 +52,7 @@ public class PaymentController {
         }
     }
 
-    @GetMapping(value = "/discovery")
+    @GetMapping(value = "/payment/lb")
     public void discovery() {
         List<String> services = discoveryClient.getServices();
         for (String service : services) {

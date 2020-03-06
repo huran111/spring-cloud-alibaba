@@ -6,15 +6,21 @@ import com.hr.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @Slf4j
 public class PaymentController {
 
+    @Autowired
+    private DiscoveryClient discoveryClient;
     @Autowired
     private PaymentService paymentService;
     @Value("${server.port}")
@@ -42,5 +48,20 @@ public class PaymentController {
             return new CommonResult<>(200, "查询失败", paymentById);
         }
     }
+    @GetMapping(value = "/payment/lb")
+    public void discovery() {
 
+        List<String> services = discoveryClient.getServices();
+        for (String service : services) {
+            System.out.println("服務:"+service);
+        }
+        System.out.println("----------------------------------------------------------------------------------");
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PROVIDER-PAYMENT");
+        for (ServiceInstance instance : instances) {
+            System.out.println("主機名:" + instance.getHost());
+            System.out.println("端口:" + instance.getPort());
+            System.out.println("實例id:" + instance.getInstanceId());
+            System.out.println("URL:" + instance.getUri());
+        }
+    }
 }
