@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -56,7 +57,7 @@ public class PaymentController {
     public void discovery() {
         List<String> services = discoveryClient.getServices();
         for (String service : services) {
-            System.out.println("服務:"+service);
+            System.out.println("服務:" + service);
         }
         System.out.println("----------------------------------------------------------------------------------");
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PROVIDER-PAYMENT");
@@ -68,4 +69,13 @@ public class PaymentController {
         }
     }
 
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (Exception e) {
+
+        }
+        return this.serverPort;
+    }
 }

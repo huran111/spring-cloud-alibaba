@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -63,5 +64,14 @@ public class PaymentController {
             System.out.println("實例id:" + instance.getInstanceId());
             System.out.println("URL:" + instance.getUri());
         }
+    }
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (Exception e) {
+
+        }
+        return serverPort;
     }
 }
