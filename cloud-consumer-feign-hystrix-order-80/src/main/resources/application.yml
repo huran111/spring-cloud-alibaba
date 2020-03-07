@@ -6,3 +6,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:7001/eureka
       #defaultZone: http://peer2:7002/eureka,http://peer1:7001/eureka/  #集群版
+#用于服务降级，在注解feignclient 中添加fallabackfactory 属性
+feign:
+  hystrix:
+    enabled: true
