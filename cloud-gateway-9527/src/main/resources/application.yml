@@ -16,13 +16,18 @@ spring:
     gateway:
       routes:
         - id: payment_routh #路由的id
-          uri: http://localhost:8001 #服务地址
+          #uri: http://localhost:8001 #服务地址
+          uri: lb://cloud-provider-payment
           predicates:
               Path=/payment/get/**
         - id: payment_routh2 #路由的id
-          uri: http://localhost:8001 #服务地址
+          #uri: http://localhost:8001 #服务地址
+          uri: lb://cloud-provider-payment
           predicates:
               Path=/payment/lb/**
+      discovery:
+        locator:
+          enabled: true #开启 动态路由 微服务名称
 
 
 
